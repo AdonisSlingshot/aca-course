@@ -12,7 +12,7 @@ resources:
 - repo: self
 
 variables:
-  IMAGE_NAME: houssemdocker/album-backend-api
+  IMAGE_NAME: azerothdweller/album-backend-api
   CONTAINERAPPS_APP: album-backend-api
   CONTAINERAPPS_ENVIRONMENT: aca-environment
   RESOURCE_GROUP: rg-containerapps-azure-pipelines
@@ -24,8 +24,7 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: ubuntu-latest
+    pool: redhatAgent
     steps:
 
     - task: Docker@2
@@ -49,8 +48,7 @@ stages:
   jobs:
   - job: Deploy
     displayName: Deploy
-    pool:
-      vmImage: ubuntu-latest
+    pool: redhatAgent
     steps:
 
     - task: AzureContainerApps@1
